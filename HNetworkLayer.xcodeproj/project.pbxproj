@@ -51,6 +51,7 @@
 		5E5EB91329811AE1003437C6 /* HNetworkLayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HNetworkLayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5EB91729811AE1003437C6 /* HNetworkLayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetworkLayerUITests.swift; sourceTree = "<group>"; };
 		5E5EB91929811AE1003437C6 /* HNetworkLayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetworkLayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E5EB92629811C58003437C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 		5E5EB8E729811AE0003437C6 = {
 			isa = PBXGroup;
 			children = (
+				5E5EB92629811C58003437C6 /* README.md */,
 				5E5EB8F229811AE0003437C6 /* HNetworkLayer */,
 				5E5EB90C29811AE1003437C6 /* HNetworkLayerTests */,
 				5E5EB91629811AE1003437C6 /* HNetworkLayerUITests */,
