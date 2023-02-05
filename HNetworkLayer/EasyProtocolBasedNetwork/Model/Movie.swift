@@ -44,7 +44,7 @@ struct Movie {
     let overview: String
 }
 
-extension Movie: Decodable {
+extension Movie: Codable {
     
     enum MovieCodingKeys: String, CodingKey {
         case id

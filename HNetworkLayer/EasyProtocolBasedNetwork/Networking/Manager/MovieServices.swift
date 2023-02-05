@@ -1,42 +1,26 @@
 //
-//  NetworkManager.swift
+//  MovieServices.swift
 //  HNetworkLayer
 //
-//  Created by Hamit Seyrek on 27.01.2023.
+//  Created by Hamit Seyrek on 31.01.2023.
 //
 
 import Foundation
 
-enum NetworkResponse:String {
-    case success
-    case authenticationError = "You need to be authenticated first."
-    case badRequest = "Bad request"
-    case outdated = "The url you requested is outdated."
-    case failed = "Network request failed."
-    case noData = "Response returned with no data to decode."
-    case unableToDecode = "We could not decode the response."
-}
-
-enum Result<String>{
-    case success
-    case failure(String)
-}
-
-struct NetworkManager {
+struct MovieServices {
     
-    static let environment : NetworkEnvironment = .production
-    static let MovieAPIKey = "7e5c91391397f95eb1d23124a14bd6a7"
     let router = Router<MovieApi>()
     
     func getNewMovies(page: Int, completion: @escaping (_ movie: [Movie]?,_ error: String?)->()){
-        router.request(.newMovies(page: page)) { data, response, error in
+        
+        router.request(.popular(page: page)) { data, response, error in
             
             if error != nil {
                 completion(nil, "Please check your network connection.")
             }
             
             if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
+                let result = MyNetworkManager.handleNetworkResponse(response)
                 switch result {
                 case .success:
                     guard let responseData = data else {
@@ -60,13 +44,7 @@ struct NetworkManager {
         }
     }
     
-    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>{
-        switch response.statusCode {
-        case 200...299: return .success
-        case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-        case 600: return .failure(NetworkResponse.outdated.rawValue)
-        default: return .failure(NetworkResponse.failed.rawValue)
-        }
+    func getPopular(page: Int, completion: @escaping (_ movie: [Movie]?,_ error: String?)->()){
+        
     }
 }

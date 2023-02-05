@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MovieViewController.swift
 //  HNetworkLayer
 //
 //  Created by Hamit Seyrek on 27.01.2023.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MovieViewController: UIViewController {
     
-    var networkManager: NetworkManager!
+    var services: MovieServices!
     
-    init(networkManager: NetworkManager) {
+    init(services: MovieServices) {
         super.init(nibName: nil, bundle: nil)
-        self.networkManager = networkManager
+        self.services = services
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,9 +21,10 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = .green
-        networkManager.getNewMovies(page: 1) { movies, error in
+        services.getNewMovies(page: 1) { movies, error in
             print("***** m", movies?.count, movies?.first?.title)
         }
         

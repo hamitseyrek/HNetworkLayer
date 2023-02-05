@@ -24,7 +24,7 @@ extension MovieApi: EndPointType {
     
     var environmentBaseURL : String {
         
-        switch NetworkManager.environment {
+        switch MyNetworkManager.environment {
             
         case .production: return "https://api.themoviedb.org/3/movie/"
         case .qa: return "https://qa.themoviedb.org/3/movie/"
@@ -50,7 +50,7 @@ extension MovieApi: EndPointType {
         }
     }
     
-    var httpMethod: HTTPMethod {
+    var httpMethod: MyHTTPMethod {
         return .get
     }
     
@@ -60,7 +60,12 @@ extension MovieApi: EndPointType {
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: ["page":page,
-                                                      "api_key":NetworkManager.MovieAPIKey])
+                                                      "api_key":MyNetworkManager.MovieAPIKey])
+        case .popular(page: let page):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["page":page,
+                                                      "api_key":MyNetworkManager.MovieAPIKey])
         default:
             return .request
         }
